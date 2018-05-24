@@ -2,43 +2,51 @@
  * Create a list that holds all of your cards
  */
 
-const listOfCards = [
-    'fa-diamond',
-    'fa-paper-plane-o',
-    'fa-anchor',
-    'fa-bolt',
-    'fa-cube',
-    'fa-leaf',
-    'fa-bicycle',
-    'fa-bomb'
+let arrayCards = [
+    'fa-diamond', 'fa-diamond',
+    'fa-paper-plane-o', 'fa-paper-plane-o',
+    'fa-anchor', 'fa-anchor',
+    'fa-bolt', 'fa-bolt',
+    'fa-cube','fa-cube',
+    'fa-leaf', 'fa-leaf',
+    'fa-bicycle', 'fa-bicycle',
+    'fa-bomb', 'fa-bomb'
     
 ];
 
 
 
-const deck = document.querySelector('.deck');
-const card = document.getElementsByClassName("card");
+let openCards = [];
+
+
+let allCards = document.querySelectorAll('.card'); // get the card class and store to allCards
+
+allCards.forEach(function(event) {
+    event.addEventListener('click', function(e) {
+        event.classList.add('open', 'show');
+        openCards.push(event);
+        
+        if(openCards.length >= 2) {
+            setTimeout(function() {
+                openCards.forEach(function(event) {
+                    event.classList.remove('open', 'show');
+                
+            });
+            }, 2000);
+        } else {
+            openCards.push(event);
+            event.classList.add('open', 'show');
+            
+        }
+        
+    });
+    
+});
 
 
 
-function openCard(event) {
-   
-   event.target.classList.add('open', 'show');
-
-}
-
-deck.addEventListener("click", openCard);
 
 
-
-//```
-//const mainHeading = document.querySelector('h1');
-//
-//mainHeading.addEventListener('click', function () {
-//  console.log('The heading was clicked!');
-//});
-//
-//```
 
 
 
