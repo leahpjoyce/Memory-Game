@@ -18,6 +18,7 @@ let arrayCards = [
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
+
 function generateCard(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
