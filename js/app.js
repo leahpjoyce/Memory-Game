@@ -15,36 +15,24 @@ let arrayCards = [
 ];
 
 
-
+let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
+function generateCard(card) {
+    return `<li class="card"><i class="fa ${card}"></i></li>`;
+}
 
-let allCards = document.querySelectorAll('.card'); // get the card class and store to allCards
 
-allCards.forEach(function(event) {
-    event.addEventListener('click', function(e) {
-        event.classList.add('open', 'show');
-        openCards.push(event);
-        
-        if(openCards.length >= 2) {
-            setTimeout(function() {
-                openCards.forEach(function(event) {
-                    event.classList.remove('open', 'show');
-                
-            });
-            }, 2000);
-        } else {
-            openCards.push(event);
-            event.classList.add('open', 'show');
-            
-        }
-        
+const deck = document.querySelector('.deck');
+
+function initGame() {
+    var getCard = arrayCards.map(function(card) {
+        return generateCard(card);
     });
-    
-});
+    deck.innerHTML = getCard.join('');
+}
 
-
-
+initGame();
 
 
 
