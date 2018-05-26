@@ -48,7 +48,7 @@ allCards.forEach(function(event) {
         console.log(event);
          
             if (openCards.length == 2) {
-             if(openCards[0].dataset.card == openCards[1].dataset.card ){
+             if(openCards[0].dataset.card == openCards[1].dataset.card == openCards[2].dataset.card == openCards[3].dataset.card == openCards[4].dataset.card == openCards[5].dataset.card == openCards[6].dataset.card == openCards[7].dataset.card ){
                         openCards[0].classList.add('match');
                         openCards[0].classList.add('open');
                         openCards[0].classList.add('show');
@@ -57,7 +57,30 @@ allCards.forEach(function(event) {
                         openCards[1].classList.add('open');
                         openCards[1].classList.add('show');
                  openCards = [];
-              
+                         openCards[2].classList.add('match');
+                        openCards[2].classList.add('open');
+                        openCards[2].classList.add('show');
+                 openCards = [];
+                        openCards[3].classList.add('match');
+                        openCards[3].classList.add('open');
+                        openCards[3].classList.add('show');
+                 openCards = [];
+                        openCards[4].classList.add('match');
+                        openCards[4].classList.add('open');
+                        openCards[4].classList.add('show');
+                 openCards = [];
+                        openCards[5].classList.add('match');
+                        openCards[5].classList.add('open');
+                        openCards[5].classList.add('show');
+                 openCards = [];
+                        openCards[6].classList.add('match');
+                        openCards[6].classList.add('open');
+                        openCards[6].classList.add('show');
+                 openCards = [];
+                        openCards[7].classList.add('match');
+                        openCards[7].classList.add('open');
+                        openCards[7].classList.add('show');
+                 openCards = [];
                   } else {
                     setTimeout(function() {
                     openCards.forEach(function(card) {
@@ -73,6 +96,8 @@ allCards.forEach(function(event) {
     });
     
 });
+            
+            
             
             
                 
