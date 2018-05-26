@@ -17,31 +17,68 @@ let arrayCards = [
 
 
 
-
-//function initGame() {
-//    const deck = document.querySelector('.deck');
-//    const getCard = shuffle(arrayCards).map(function(card) {
-//        return generateCard(card);
-//    });
-//    deck.innerHTML = getCard.join('');
-//}
-//
-//initGame();
-//
-//
-//function generateCard(card) {
-//    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
-//}
-
-let allCards = document.querySelectorAll('.card');
 let openCards = [];
 
-allCards.forEach(function(card) {
-    card.addEventListener('click', function(e) {
-       card.classList.add('open', 'show');
-       
-    });     
- });
+
+function generateCard(card) {
+    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
+}
+
+let deck = document.querySelector('.deck');
+
+function initGame() {
+    var getCard = shuffle(arrayCards).map(function(card) {
+        return generateCard(card);
+    });
+    deck.innerHTML = getCard.join('');
+}
+
+initGame();
+
+
+
+let allCards = document.querySelectorAll('.card'); // store card class to allCards 
+
+
+allCards.forEach(function(event) {
+    event.addEventListener('click', function(e) {
+        if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
+           event.classList.add('open', 'show'); //add class open and show
+           openCards.push(event); // add all events with open and show card
+        console.log(event);
+         
+            if (openCards.length == 2) {
+             if(openCards[0].dataset.card == openCards[1].dataset.card ){
+                        openCards[0].classList.add('match');
+                        openCards[0].classList.add('open');
+                        openCards[0].classList.add('show');
+                openCards = [];
+                        openCards[1].classList.add('match');
+                        openCards[1].classList.add('open');
+                        openCards[1].classList.add('show');
+                 openCards = [];
+              
+                  } else {
+                    setTimeout(function() {
+                    openCards.forEach(function(card) {
+                        card.classList.remove('open', 'show');              
+                });
+                  openCards = [];
+                }, 1000);
+            
+                  }
+                 
+            }
+        }
+    });
+    
+});
+            
+            
+                
+
+
+
 
 
 /*
