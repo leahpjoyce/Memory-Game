@@ -47,64 +47,34 @@ allCards.forEach(function(event) {
            openCards.push(event); // add all events with open and show card
         console.log(event);
          
-            if (openCards.length == 2) {
-             if(openCards[0].dataset.card == openCards[1].dataset.card == openCards[2].dataset.card == openCards[3].dataset.card == openCards[4].dataset.card == openCards[5].dataset.card == openCards[6].dataset.card == openCards[7].dataset.card ){
+             if (openCards.length >= 2) {
+             if(openCards[0].dataset.card == openCards[1].dataset.card ){
                         openCards[0].classList.add('match');
-                        openCards[0].classList.add('open');
-                        openCards[0].classList.add('show');
-                openCards = [];
+                        openCards[0].classList.toggle('open');
+                        openCards[0].classList.toggle('show');
+                        openCards[0].classList.toggle('disabled');
+              
                         openCards[1].classList.add('match');
                         openCards[1].classList.add('open');
                         openCards[1].classList.add('show');
-                 openCards = [];
-                         openCards[2].classList.add('match');
-                        openCards[2].classList.add('open');
-                        openCards[2].classList.add('show');
-                 openCards = [];
-                        openCards[3].classList.add('match');
-                        openCards[3].classList.add('open');
-                        openCards[3].classList.add('show');
-                 openCards = [];
-                        openCards[4].classList.add('match');
-                        openCards[4].classList.add('open');
-                        openCards[4].classList.add('show');
-                 openCards = [];
-                        openCards[5].classList.add('match');
-                        openCards[5].classList.add('open');
-                        openCards[5].classList.add('show');
-                 openCards = [];
-                        openCards[6].classList.add('match');
-                        openCards[6].classList.add('open');
-                        openCards[6].classList.add('show');
-                 openCards = [];
-                        openCards[7].classList.add('match');
-                        openCards[7].classList.add('open');
-                        openCards[7].classList.add('show');
-                 openCards = [];
+                        openCards[0].classList.toggle('disabled');
+                 openCards = []; //empty card after removing open andh show
                   } else {
                     setTimeout(function() {
                     openCards.forEach(function(card) {
                         card.classList.remove('open', 'show');              
                 });
-                  openCards = [];
-                }, 1000);
-            
-                  }
-                 
+                  openCards = []; //empty card after removing open andh show
+                }, 200);
+                
+                  }     
             }
+         
         }
     });
     
 });
             
-            
-            
-            
-                
-
-
-
-
 
 /*
  * Display the cards on the page
