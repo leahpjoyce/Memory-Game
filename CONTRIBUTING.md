@@ -1,3 +1,14 @@
-# How to contribute
+# Contributing
 
-The files in this repository are used as the starting point for all students. Because we want students to write the majority of the code themselves, pull requests (most likely) will _not_ be merged into the project.
+Fork and Clone the repo:
+
+- git clone https://github.com/leahpjoyce/Memory-Game
+
+Make a directory
+
+- cd Memory-Game
+
+## Submit your Pull Request 
+
+https://github.com/leahpjoyce/Memory-Game/pulls
+
