@@ -27,6 +27,7 @@ function initGame() {
     moves = 0;
     
     deck.innerHTML = getCard.join('');
+    
 }
 
 initGame();
@@ -57,9 +58,10 @@ let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
 
 
+
 allCards.forEach(function(event) {
     event.addEventListener('click', function(e) {
-        if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match') && !event.classList.contains('disabled')) {
+        if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
            openCards.push(event); // add all events with open and show card
          
@@ -86,14 +88,9 @@ allCards.forEach(function(event) {
                   }     
             }
             moves++;
-            moveCounter.innerText = moves; 
+            moveCounter.innerHTML = moves; 
         }
     });
     
 });
             
-            
-            
-                
-
-
