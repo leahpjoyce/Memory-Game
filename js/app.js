@@ -58,7 +58,7 @@ let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
 
 
-
+function game() {
 allCards.forEach(function(event) {
     event.addEventListener('click', function(e) {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
@@ -93,4 +93,8 @@ allCards.forEach(function(event) {
     });
     
 });
+
+}
             
+                
+game();
