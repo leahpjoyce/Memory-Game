@@ -61,7 +61,8 @@ let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
 
 
-function game() {
+
+const game = () => {    
 allCards.forEach(function(event) {
     event.addEventListener('click', function(e) {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
