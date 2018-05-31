@@ -103,4 +103,7 @@ const moveCard = () => {
  moveCounter.innerHTML = moves; 
 }
 
+const resetCard = () => {
+ openCards = []; 
+}
 
