@@ -124,3 +124,16 @@ reset.addEventListener("click", function() {
     game();
 });
 
+
+const starsCard = () => {
+    const stars = document.querySelectorAll('.fa-star');
+        for (var i= 0; i < stars.length; i++){
+            stars[i].style.color = '#02ccba';
+           
+        }
+}
+
+starsCard();
+
+
+
