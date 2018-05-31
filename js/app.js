@@ -18,7 +18,7 @@ let arrayCards = [
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 
-function initGame() {
+const initGame = () => {
     let deck = document.querySelector('.deck');
     
     var getCard = shuffle(arrayCards).map(function(card) {
