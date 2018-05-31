@@ -18,6 +18,20 @@ let arrayCards = [
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 
+// Shuffle function from http://stackoverflow.com/a/2450976
+const shuffle = (array => {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+});
 
 // Create <li> element in HMTL
 const generateCard = (card => {
@@ -38,23 +52,6 @@ const initGame = () => {
 }
 
 initGame();
-
-
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
 
 
 let openCards = [];
