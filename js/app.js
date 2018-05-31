@@ -140,3 +140,15 @@ const starsCard = () => {
 
 starsCard();
 
+const startTimer = () => {
+    interval = setInterval(function(){
+        second++;
+        if(second == 60){
+            minute++;
+            second=0;
+        }
+        if(minute == 60){
+            minute = 0;
+        }
+    },1000);
+}
