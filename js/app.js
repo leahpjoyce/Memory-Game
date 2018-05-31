@@ -18,6 +18,13 @@ let arrayCards = [
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 
+
+// Create <li> element in HMTL
+const generateCard = (card => {
+    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
+});
+
+
 const initGame = () => {
     let deck = document.querySelector('.deck');
     
@@ -32,10 +39,6 @@ const initGame = () => {
 
 initGame();
 
-// Create <li> element in HMTL
-function generateCard(card) {
-    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
-}
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
