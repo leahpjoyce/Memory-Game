@@ -17,6 +17,8 @@ let arrayCards = [
 
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
+let second, minute, hour, interval;
+let stars = document.querySelectorAll('.fa-star');
 
 
 
@@ -104,9 +106,11 @@ game();
 const moveCard = () => {
  moves++;
  moveCounter.innerHTML = moves; 
+    
 }
 
 const resetCard = () => {
+ moves = 0;
  openCards = []; 
 }
 
@@ -119,6 +123,7 @@ const resetClickCards = () => {
 }
 
 reset.addEventListener("click", function() {
+    moves = 0;
 	resetCard();
 	resetClickCards();
     game();
@@ -126,14 +131,12 @@ reset.addEventListener("click", function() {
 
 
 const starsCard = () => {
-    const stars = document.querySelectorAll('.fa-star');
         for (var i= 0; i < stars.length; i++){
             stars[i].style.color = '#02ccba';
-           
+         
         }
+    
 }
 
 starsCard();
-
-
 
