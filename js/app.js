@@ -72,6 +72,7 @@ const cardGame = allCards.forEach(event => {
            openCards.push(event); // add all events with open and show card
          
              if (openCards.length >= 2) {
+                 moveCardCounter();
              if(openCards[0].dataset.card == openCards[1].dataset.card ){
                         openCards[0].classList.add('match');
                         openCards[0].classList.toggle('open');
@@ -151,4 +152,28 @@ const startTimer = () => {
             minute = 0;
         }
     },1000);
+}
+
+
+const moveCardCounter = () => {
+    if(moves == 1){
+        second = 0;
+        minute = 0; 
+        startTimer();
+    }
+   else if (moves < 15){
+        for( let i= 0; i < stars.length; i++){
+            if(i > 1){
+                stars[i].style.color = 'black';
+            }
+        }
+    }
+    else if (moves > 25){
+        for( let i= 0; i < stars.length; i++){
+            if(i > 0){
+                 stars[i].style.color = 'black';
+            }
+        }
+    }
+ 
 }
