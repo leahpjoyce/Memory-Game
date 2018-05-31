@@ -18,6 +18,8 @@ let arrayCards = [
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 
+
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 const shuffle = (array => {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -48,7 +50,7 @@ const initGame = () => {
     moves = 0;
     
     deck.innerHTML = getCard.join('');
-    
+     
 }
 
 initGame();
@@ -56,7 +58,8 @@ initGame();
 
 let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
-const reset = document.querySelector('.fa-repeat');
+let reset = document.querySelector('.fa-repeat');
+
 
 
 const game = () => {    
@@ -120,6 +123,4 @@ reset.addEventListener("click", function() {
 	resetClickCards();
     game();
 });
-
-
 
