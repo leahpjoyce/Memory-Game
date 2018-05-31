@@ -86,8 +86,7 @@ const cardGame = allCards.forEach(event => {
                 
                   }     
             }
-            moves++;
-            moveCounter.innerHTML = moves; 
+            moveCard();
         }
     });
     
@@ -97,3 +96,10 @@ const cardGame = allCards.forEach(event => {
             
                 
 game();
+
+const moveCard = () => {
+ moves++;
+ moveCounter.innerHTML = moves; 
+}
+
+
