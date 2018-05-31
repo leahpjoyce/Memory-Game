@@ -58,7 +58,6 @@ let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
 
 
-
 const game = () => {    
 allCards.forEach(function(event) {
     event.addEventListener('click', function(e) {
@@ -76,7 +75,7 @@ allCards.forEach(function(event) {
                         openCards[1].classList.add('match');
                         openCards[1].classList.add('open');
                         openCards[1].classList.add('show');
-                        openCards[0].classList.toggle('disabled');
+                        
                  openCards = []; //empty card after removing open andh show
                   } else {
                     setTimeout(function() {
