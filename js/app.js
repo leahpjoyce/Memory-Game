@@ -59,7 +59,7 @@ let allCards = document.querySelectorAll('.card'); // store card class to allCar
 
 
 const game = () => {    
-allCards.forEach(function(event) {
+const cardGame = allCards.forEach(event => {
     event.addEventListener('click', function(e) {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
@@ -70,8 +70,7 @@ allCards.forEach(function(event) {
                         openCards[0].classList.add('match');
                         openCards[0].classList.toggle('open');
                         openCards[0].classList.toggle('show');
-                        openCards[0].classList.toggle('disabled');
-              
+
                         openCards[1].classList.add('match');
                         openCards[1].classList.add('open');
                         openCards[1].classList.add('show');
