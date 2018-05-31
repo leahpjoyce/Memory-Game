@@ -109,6 +109,10 @@ h1 {
     cursor: pointer;
 }
 
+.score-panel .timer {
+    margin-left: 20px;
+}
+
 @media (max-width: 400px) {
     
     .container { 
