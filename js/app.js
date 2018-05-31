@@ -107,3 +107,13 @@ const resetCard = () => {
  openCards = []; 
 }
 
+const resetClickCards = () => { 
+	allCards.forEach(function(card) {
+		card.classList.remove("match", "show", "open");
+		openCards = [];
+
+	});
+}
+
+
+
