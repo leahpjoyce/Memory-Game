@@ -115,5 +115,11 @@ const resetClickCards = () => {
 	});
 }
 
+reset.addEventListener("click", function() {
+	resetCard();
+	resetClickCards();
+    game();
+});
+
 
 
