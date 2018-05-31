@@ -56,6 +56,7 @@ initGame();
 
 let openCards = [];
 let allCards = document.querySelectorAll('.card'); // store card class to allCards 
+const reset = document.querySelector('.fa-repeat');
 
 
 const game = () => {    
@@ -87,14 +88,14 @@ const cardGame = allCards.forEach(event => {
                   }     
             }
             moveCard();
+          
         }
     });
     
 });
 
 }
-            
-                
+                            
 game();
 
 const moveCard = () => {
