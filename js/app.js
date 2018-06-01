@@ -174,6 +174,41 @@ const moveCardCounter = () => {
 
 
 
+function setTimer () {
+  timer.innerHTML = minute + ' : ' + second;
+  second++;
+
+  if (second <= 9) {
+    second = '0' + second;
+  }
+  if (second === 60) {
+    minute++;
+    second = 0;
+  } else {
+    minute = minute;
+  }
+}
+
+function startTimer () {
+ currentTimer = setInterval(setTimer, 1000);
+}
+
+function stopTimer () {
+  clearInterval(currentTimer);
+}
+
+function resetTimer () {
+  second = 0;
+   minute = 0; 
+   hour = 0;
+   var timer = document.querySelector(".timer");
+  // timer.innerHTML = "0 mins 0 secs";
+   clearInterval(interval);
+}
+
+
+
+
 
 
 
