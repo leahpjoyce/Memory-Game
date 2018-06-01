@@ -116,13 +116,13 @@ const moveCard = (() => {
 });
 
 
-const resetClickCards = () => { 
-	allCards.forEach(function(card) {
+const resetClickCards = (() => { 
+	allCards.forEach((card) => {
 		card.classList.remove("match", "show", "open");
 		openCards = [];
 
 	});
-}
+});
 
 reset.addEventListener("click", function() {
     minute = 0;
