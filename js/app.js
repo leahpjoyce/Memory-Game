@@ -151,7 +151,7 @@ const moveCardCounter = () => {
         minute = 0; 
         startTimer();
     }
-   else if (moves < 15){
+   else if (moves == 15){
         for( let i= 0; i < stars.length; i++){
             if(i > 1){
                 stars[i].style.color = 'black';
