@@ -48,7 +48,7 @@ const generateCard = (card => {
 });
 
 
-const initGame = () => {
+const initGame = (() => {
     let deck = document.querySelector('.deck');
     
     var getCard = shuffle(arrayCards).map(function(card) {
@@ -58,7 +58,7 @@ const initGame = () => {
     
     deck.innerHTML = getCard.join('');
 
-}
+});
 
 initGame();
 
@@ -69,7 +69,7 @@ let reset = document.querySelector('.fa-repeat');
 
 
 
-const game = () => {    
+const game = (() => {    
 const cardGame = allCards.forEach(event => {
     event.addEventListener('click', function(e) {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
@@ -105,15 +105,15 @@ const cardGame = allCards.forEach(event => {
     
 });
 
-}
+});
                             
 game();
 
-const moveCard = () => {
+const moveCard = (() => {
  moves++;
  moveCounter.innerHTML = moves; 
     
-}
+});
 
 
 const resetClickCards = () => { 
@@ -140,18 +140,18 @@ reset.addEventListener("click", function() {
 });
 
 
-const starsCard = () => {
+const starsCard = (() => {
         for (var i= 0; i < stars.length; i++){
             stars[i].style.color = '#02ccba';
          
         }
     
-}
+});
 
 starsCard();
 
 
-const moveCardCounter = () => { 
+const moveCardCounter = (() => { 
     if(moves == 1){
         starsCard();
         second = 0;
@@ -174,10 +174,10 @@ const moveCardCounter = () => {
         }
     }
  
-}
+});
 
 
-const setTimer = () => {
+const setTimer = (() => {
   timer.innerHTML = minute + ' : ' + second;
   second++;
 
@@ -190,7 +190,7 @@ const setTimer = () => {
   } else {
     minute = minute;
   }
-}
+});
 
 /**
 * @description startTimer function
@@ -203,17 +203,17 @@ const startTimer = () => {
 /**
 * @description resetTimer function
 */
-const resetTimer = () => {
+const resetTimer = (() => {
    second = 0;
    minute = 0; 
    clearInterval(interval);
-}
+});
 
 /**
 * @description stopTimer function
 * clears the currentTimer to 0
 */
-function stopTimer() {
+const stopTimer = () => {
   clearInterval(currentTimer);
 }
 
