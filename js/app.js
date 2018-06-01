@@ -126,6 +126,7 @@ const resetClickCards = () => {
 reset.addEventListener("click", function() {
     moves = 0;
     moveCounter.innerHTML = moves;
+    starsCard();
     resetTimer();
 	resetClickCards();
     game();
@@ -188,12 +189,9 @@ function startTimer () {
  currentTimer = setInterval(setTimer, 1000);
 }
 
-//function stopTimer () {
-//  clearInterval(currentTimer);
-//}
 
 function resetTimer () {
-  second = 0;
+   second = 0;
    minute = 0; 
    var timer = document.querySelector(".timer");
    clearInterval(interval);
