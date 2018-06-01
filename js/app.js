@@ -90,7 +90,7 @@ const cardGame = allCards.forEach(event => {
                  openCards = []; //empty card after removing open andh show
                   } else {
                     setTimeout(() => {
-                    openCards.forEach(function(card) {
+                    openCards.forEach((card) => {
                         card.classList.remove('open', 'show');              
                 });
                   openCards = []; //empty card after removing open andh show
