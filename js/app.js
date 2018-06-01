@@ -18,8 +18,9 @@ let arrayCards = [
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 let second, minute, hour, interval;
+let currentTimer;
 let stars = document.querySelectorAll('.fa-star');
-
+const timer = document.querySelector(".timer");
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -52,6 +53,9 @@ const initGame = () => {
     moves = 0;
     
     deck.innerHTML = getCard.join('');
+    
+    //reset timer
+    resetTimer();
      
 }
 
@@ -72,7 +76,7 @@ const cardGame = allCards.forEach(event => {
            openCards.push(event); // add all events with open and show card
          
              if (openCards.length >= 2) {
-                 moveCardCounter();
+                moveCardCounter();
              if(openCards[0].dataset.card == openCards[1].dataset.card ){
                         openCards[0].classList.add('match');
                         openCards[0].classList.toggle('open');
@@ -110,10 +114,10 @@ const moveCard = () => {
     
 }
 
-const resetCard = () => {
- moves = 0;
- openCards = []; 
-}
+//const resetCard = () => {
+// moves = 0;
+// openCards = []; 
+//}
 
 const resetClickCards = () => { 
 	allCards.forEach(function(card) {
@@ -125,9 +129,12 @@ const resetClickCards = () => {
 
 reset.addEventListener("click", function() {
     moves = 0;
-	resetCard();
+    moveCounter.innerHTML = moves;
+	//resetCard();
+    resetTimer();
 	resetClickCards();
     game();
+    stopTimer();
 });
 
 
@@ -140,19 +147,6 @@ const starsCard = () => {
 }
 
 starsCard();
-
-const startTimer = () => {
-    interval = setInterval(function(){
-        second++;
-        if(second == 60){
-            minute++;
-            second=0;
-        }
-        if(minute == 60){
-            minute = 0;
-        }
-    },1000);
-}
 
 
 const moveCardCounter = () => {
@@ -177,3 +171,22 @@ const moveCardCounter = () => {
     }
  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
