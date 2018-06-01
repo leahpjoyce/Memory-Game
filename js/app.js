@@ -71,7 +71,7 @@ let reset = document.querySelector('.fa-repeat');
 
 const game = (() => {    
 const cardGame = allCards.forEach(event => {
-    event.addEventListener('click', function(e) {
+    event.addEventListener('click', e => {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
            openCards.push(event); // add all events with open and show card
