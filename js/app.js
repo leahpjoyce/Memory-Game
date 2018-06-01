@@ -114,10 +114,6 @@ const moveCard = () => {
     
 }
 
-//const resetCard = () => {
-// moves = 0;
-// openCards = []; 
-//}
 
 const resetClickCards = () => { 
 	allCards.forEach(function(card) {
@@ -130,7 +126,6 @@ const resetClickCards = () => {
 reset.addEventListener("click", function() {
     moves = 0;
     moveCounter.innerHTML = moves;
-	//resetCard();
     resetTimer();
 	resetClickCards();
     game();
