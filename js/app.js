@@ -191,7 +191,6 @@ const startTimer = () => {
 const resetTimer = () => {
    second = 0;
    minute = 0; 
-   var timer = document.querySelector(".timer");
    clearInterval(interval);
 }
 
