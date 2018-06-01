@@ -1,7 +1,6 @@
-/*
- * Create a list that holds all of your cards
- */
-
+/**
+* list of arrayCards
+*/
 let arrayCards = [
     'fa-diamond', 'fa-diamond',
     'fa-paper-plane-o', 'fa-paper-plane-o',
@@ -14,13 +13,16 @@ let arrayCards = [
     
 ];
 
-
+/**
+* store elements to variable 
+* call elements
+*/
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
 let second, minute, hour, interval;
 let currentTimer;
 let stars = document.querySelectorAll('.fa-star');
-const timer = document.querySelector(".timer");
+let timer = document.querySelector(".timer");
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -38,7 +40,9 @@ const shuffle = (array => {
     return array;
 });
 
-// Create <li> element in HMTL
+/**
+* create element li's to HTML 
+*/
 const generateCard = (card => {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 });
@@ -71,7 +75,7 @@ const cardGame = allCards.forEach(event => {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
            openCards.push(event); // add all events with open and show card
-         
+
              if (openCards.length >= 2) {
                 moveCardCounter();
              if(openCards[0].dataset.card == openCards[1].dataset.card ){
@@ -93,8 +97,8 @@ const cardGame = allCards.forEach(event => {
                 }, 200);
                 
                   }     
-            }
-            moveCard();
+             }
+            moveCard(); // call moveCard function
           
         }
     });
@@ -130,6 +134,9 @@ reset.addEventListener("click", function() {
 	resetClickCards();
     stopTimer();
     timer.innerHTML = minute + ' : ' + second;
+    for( let i= 0; i < stars.length; i++){
+         stars[i].style.color = 'black';         
+        }
 });
 
 
@@ -144,12 +151,13 @@ const starsCard = () => {
 starsCard();
 
 
-const moveCardCounter = () => {
-      
+const moveCardCounter = () => { 
     if(moves == 1){
+        starsCard();
         second = 0;
         minute = 0; 
         startTimer();
+       
     }
    else if (moves == 15){
         for( let i= 0; i < stars.length; i++){
@@ -184,17 +192,27 @@ const setTimer = () => {
   }
 }
 
+/**
+* @description startTimer function
+* setInterval of setTimer function to 1 second
+*/
 const startTimer = () => {
  currentTimer = setInterval(setTimer, 1000);
 }
 
+/**
+* @description resetTimer function
+*/
 const resetTimer = () => {
    second = 0;
    minute = 0; 
    clearInterval(interval);
 }
 
-// function to stop the timer
+/**
+* @description stopTimer function
+* clears the currentTimer to 0
+*/
 function stopTimer() {
   clearInterval(currentTimer);
 }
