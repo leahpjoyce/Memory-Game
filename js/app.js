@@ -129,7 +129,7 @@ reset.addEventListener("click", function() {
     resetTimer();
 	resetClickCards();
     game();
-    stopTimer();
+   
 });
 
 
@@ -188,14 +188,13 @@ function startTimer () {
  currentTimer = setInterval(setTimer, 1000);
 }
 
-function stopTimer () {
-  clearInterval(currentTimer);
-}
+//function stopTimer () {
+//  clearInterval(currentTimer);
+//}
 
 function resetTimer () {
   second = 0;
    minute = 0; 
-   hour = 0;
    var timer = document.querySelector(".timer");
    clearInterval(interval);
 }
