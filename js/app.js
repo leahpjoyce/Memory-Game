@@ -121,14 +121,15 @@ const resetClickCards = () => {
 }
 
 reset.addEventListener("click", function() {
+    minute = 0;
+    second = 0;
     moves = 0;
     moveCounter.innerHTML = moves;
     starsCard();
     resetTimer();
 	resetClickCards();
-    
-      
-   
+    stopTimer();
+    timer.innerHTML = minute + ' : ' + second;
 });
 
 
@@ -194,7 +195,10 @@ const resetTimer = () => {
    clearInterval(interval);
 }
 
-
+// function to stop the timer
+function stopTimer() {
+  clearInterval(currentTimer);
+}
 
 
 
