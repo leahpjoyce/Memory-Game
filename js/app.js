@@ -124,7 +124,7 @@ const resetClickCards = (() => {
 	});
 });
 
-reset.addEventListener("click", function() {
+reset.addEventListener("click", () => {
     minute = 0;
     second = 0;
     moves = 0;
