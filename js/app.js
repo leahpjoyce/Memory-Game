@@ -202,7 +202,6 @@ function resetTimer () {
    minute = 0; 
    hour = 0;
    var timer = document.querySelector(".timer");
-  // timer.innerHTML = "0 mins 0 secs";
    clearInterval(interval);
 }
 
