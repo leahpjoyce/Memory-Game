@@ -53,10 +53,7 @@ const initGame = () => {
     moves = 0;
     
     deck.innerHTML = getCard.join('');
-    
-    //reset timer
-    resetTimer();
-     
+
 }
 
 initGame();
@@ -129,7 +126,8 @@ reset.addEventListener("click", function() {
     starsCard();
     resetTimer();
 	resetClickCards();
-    game();
+    
+      
    
 });
 
@@ -146,6 +144,7 @@ starsCard();
 
 
 const moveCardCounter = () => {
+      
     if(moves == 1){
         second = 0;
         minute = 0; 
@@ -169,8 +168,7 @@ const moveCardCounter = () => {
 }
 
 
-
-function setTimer () {
+const setTimer = () => {
   timer.innerHTML = minute + ' : ' + second;
   second++;
 
@@ -185,12 +183,11 @@ function setTimer () {
   }
 }
 
-function startTimer () {
+const startTimer = () => {
  currentTimer = setInterval(setTimer, 1000);
 }
 
-
-function resetTimer () {
+const resetTimer = () => {
    second = 0;
    minute = 0; 
    var timer = document.querySelector(".timer");
