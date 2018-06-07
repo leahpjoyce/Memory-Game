@@ -19,10 +19,10 @@ let arrayCards = [
 */
 let moveCounter = document.querySelector('.moves');
 let moves = 0;
-let second, minute, hour, interval;
-let currentTimer;
+let second = 0;
 let stars = document.querySelectorAll('.fa-star');
 let timer = document.querySelector(".timer");
+let currentTimer;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -57,6 +57,7 @@ const initGame = (() => {
     moves = 0;
     
     deck.innerHTML = getCard.join('');
+    
 
 });
 
@@ -106,8 +107,7 @@ const cardGame = allCards.forEach(event => {
 });
 
 });
-                            
-game();
+game();                            
 
 const moveCard = (() => {
  moves++;
@@ -124,40 +124,34 @@ const resetClickCards = (() => {
 	});
 });
 
+
 reset.addEventListener("click", () => {
-    minute = 0;
     second = 0;
     moves = 0;
     moveCounter.innerHTML = moves;
+    moveCardCounter();
     starsCard();
     resetTimer();
 	resetClickCards();
-    stopTimer();
-    timer.innerHTML = minute + ' : ' + second;
+    timer.innerHTML = 0;
     for( let i= 0; i < stars.length; i++){
          stars[i].style.color = 'black';         
         }
+   currentTimer = setInterval(setTimer, 1000);
 });
 
 
 const starsCard = (() => {
         for (var i= 0; i < stars.length; i++){
-            stars[i].style.color = '#02ccba';
-         
-        }
-    
+            stars[i].style.color = '#02ccba';  
+        }  
 });
-
-starsCard();
 
 
 const moveCardCounter = (() => { 
     if(moves == 1){
         starsCard();
-        second = 0;
-        minute = 0; 
-        startTimer();
-       
+        setTimer();
     }
    else if (moves == 15){
         for( let i= 0; i < stars.length; i++){
@@ -166,62 +160,32 @@ const moveCardCounter = (() => {
             }
         }
     }
-    else if (moves > 25){
+    else if (moves == 25){
         for( let i= 0; i < stars.length; i++){
             if(i > 0){
                  stars[i].style.color = 'black';
             }
         }
     }
- 
-});
 
+});
 
 const setTimer = (() => {
-  timer.innerHTML = minute + ' : ' + second;
   second++;
-
-  if (second <= 9) {
-    second = '0' + second;
-  }
-  if (second === 60) {
-    minute++;
-    second = 0;
-  } else {
-    minute = minute;
-  }
+  timer.innerHTML = second;  
+   
 });
 
-/**
-* @description startTimer function
-* setInterval of setTimer function to 1 second
-*/
-const startTimer = () => {
- currentTimer = setInterval(setTimer, 1000);
-}
+//setInterval()'s basic syntax
+currentTimer = setInterval(setTimer, 1000);
 
 /**
 * @description resetTimer function
 */
 const resetTimer = (() => {
-   second = 0;
-   minute = 0; 
-   clearInterval(interval);
+   second = 0; 
+   clearInterval(currentTimer);
 });
-
-/**
-* @description stopTimer function
-* clears the currentTimer to 0
-*/
-const stopTimer = () => {
-  clearInterval(currentTimer);
-}
-
-
-
-
-
-
 
 
 

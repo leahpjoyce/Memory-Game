@@ -9,7 +9,7 @@ This game uses HTML, CSS and Vanilla JavaScript.
 3.  Click cards and two will remain flip if its match.
 4.  Click the cards as fast as you can to get a rating.
 
-## Credits
+## References
 
 * [FEND P3: Memory Game with Mike Wales](https://www.youtube.com/watch?v=_rUH-sEs68Y)
 * [Arrays](https://stackoverflow.com/questions/tagged/arrays)
