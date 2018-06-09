@@ -22,7 +22,7 @@ let moves = 0;
 let second = 0;
 let stars = document.querySelectorAll('.fa-star');
 let timer = document.querySelector(".timer");
-let currentTimer;
+let currentTimer = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -76,12 +76,18 @@ const cardGame = allCards.forEach(event => {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
            openCards.push(event); // add all events with open and show card
-
+                
+             if (moves === 1) {
+                 currentTimer = setInterval(setTimer, 1000);
+             }
+            
              if (openCards.length >= 2) {
                 moveCardCounter();
              if(openCards[0].dataset.card == openCards[1].dataset.card ){
                         openCards[0].classList.add('match');
+                        openCards[0].classList.add('animated', 'shake');
                         openCards[1].classList.add('match');  
+                        openCards[1].classList.add('animated', 'shake');
                  openCards = []; //empty card after removing open andh show
                   } else {
                     setTimeout(() => {
@@ -131,7 +137,7 @@ reset.addEventListener("click", () => {
     for( let i= 0; i < stars.length; i++){
          stars[i].style.color = 'black';         
         }
-   currentTimer = setInterval(setTimer, 1000);
+    
 });
 
 
@@ -170,8 +176,6 @@ const setTimer = (() => {
    
 });
 
-//setInterval()'s basic syntax
-currentTimer = setInterval(setTimer, 1000);
 
 /**
 * @description resetTimer function
@@ -183,12 +187,30 @@ const resetTimer = (() => {
 
 
 
+function buildModal() {
+    const div = document.createElement('div');
+    const container = document.querySelector('.container');
+    container.appendChild(div);
+    
+    div.className = 'pop congrats';
+}
 
+buildModal();
 
+function modalOpen() {
+   let popUp = document.querySelector('.pop');
+   popUp.innerHTML =
+        `<h2 class="congratsHeading" > Congratulations! </h2>
+        <h3 class="congratsTagline" > You've won the game! </h3>
+        <p class="congratsMove" > ${moveCounter} moves </p>
+        <p class="congratsTime" > ${timer.innerHTML} total time </p>
+        <p class="congratsStar" > stars </p>
+        <p class="congratsPlay" > Play Again </p>`;
+    const playAgain = document.querySelector('.congratsPlay');
+    playAgain.addEventListener('click',resetGame);
+}
 
-
-
-
+modalOpen();
 
 
 
