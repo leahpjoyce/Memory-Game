@@ -18,11 +18,20 @@ let arrayCards = [
 * call elements
 */
 let moveCounter = document.querySelector('.moves');
+moveCounter.textContent = 0;
 let moves = 0;
 let second = 0;
 let stars = document.querySelectorAll('.fa-star');
 let timer = document.querySelector(".timer");
 let currentTimer = 0;
+let popUp = document.querySelector('.pop');
+let matchCounter = 0;
+
+// Get the modal
+let modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -76,32 +85,40 @@ const cardGame = allCards.forEach(event => {
         if(!event.classList.contains('open') && !event.classList.contains('show') && !event.classList.contains('match')) {
            event.classList.add('open', 'show'); //add class open and show
            openCards.push(event); // add all events with open and show card
+ 
                 
              if (moves === 1) {
                  currentTimer = setInterval(setTimer, 1000);
-             }
+                }
+         
+                 if (openCards.length >= 2) {
+                    moveCardCounter();
+                     if(openCards[0].dataset.card == openCards[1].dataset.card ){
+                         lockMatch();
+                                openCards[0].classList.add('match');
+                                openCards[0].classList.add('animated', 'shake');
+                                openCards[1].classList.add('match');  
+                                openCards[1].classList.add('animated', 'shake');
+                         openCards = []; //empty card after removing open andh show
+                                
+              if( matchCounter === 16) {
+                  resetTimer();
+                  modal.style.display = 'block'; 
+              }
             
-             if (openCards.length >= 2) {
-                moveCardCounter();
-             if(openCards[0].dataset.card == openCards[1].dataset.card ){
-                        openCards[0].classList.add('match');
-                        openCards[0].classList.add('animated', 'shake');
-                        openCards[1].classList.add('match');  
-                        openCards[1].classList.add('animated', 'shake');
-                 openCards = []; //empty card after removing open andh show
-                  } else {
-                    setTimeout(() => {
-                    openCards.forEach((card) => {
-                        card.classList.remove('open', 'show');              
-                });
-                  openCards = []; //empty card after removing open andh show
-                }, 200);
-                
-                  }     
-             }
-            moveCard(); // call moveCard function
+                          } else {
+                            setTimeout(() => {
+                            openCards.forEach((card) => {
+                                card.classList.remove('open', 'show');              
+                        });
+                          openCards = []; //empty card after removing open andh show
+                        }, 200);
+
+                          }     
+                }
+                moveCard(); // call moveCard function
           
-        }
+            }
     });
     
 });
@@ -181,11 +198,14 @@ const setTimer = (() => {
 * @description resetTimer function
 */
 const resetTimer = (() => {
-   second = 0; 
+   second = 0;
    clearInterval(currentTimer);
 });
 
 
+//function resetGame() {
+//    hideCongrats();
+//}
 
 function buildModal() {
     const div = document.createElement('div');
@@ -193,24 +213,30 @@ function buildModal() {
     container.appendChild(div);
     
     div.className = 'pop congrats';
+    let pop = document.querySelector('.congrats');
+    
 }
 
 buildModal();
 
-function modalOpen() {
-   let popUp = document.querySelector('.pop');
-   popUp.innerHTML =
-        `<h2 class="congratsHeading" > Congratulations! </h2>
-        <h3 class="congratsTagline" > You've won the game! </h3>
-        <p class="congratsMove" > ${moveCounter} moves </p>
-        <p class="congratsTime" > ${timer.innerHTML} total time </p>
-        <p class="congratsStar" > stars </p>
-        <p class="congratsPlay" > Play Again </p>`;
-    const playAgain = document.querySelector('.congratsPlay');
-    playAgain.addEventListener('click',resetGame);
+
+//modal.style.display = "block";
+
+span.onclick = function() { // when you click the x it closed
+    modal.style.display = "none";
 }
 
-modalOpen();
+//window.onclick = function(event) {
 
+modal.style.display = 'none'; // hides the modal
+//modal.style.display = 'block'; 
 
+function lockMatch() {
+    let faSymbol = `fa-${openCards[0]}`;
+    let collection = document.getElementsByClassName(`${faSymbol}`);
 
+    for(let i=0; i<collection.length; i++){
+        collection[i].parentElement.className = `card match`;
+    }
+    matchCounter += 2;
+}
