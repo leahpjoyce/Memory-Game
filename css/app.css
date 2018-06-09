@@ -30,6 +30,7 @@ body {
     flex-direction: column;
     width: 100%;
     margin-left: 0;
+ 
 }
 
 h1 {
@@ -118,6 +119,41 @@ h1 {
     margin-left: 20px;
 }
 
+/*Start of Modal CSS styles*/
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: azure;
+    margin-top: 70px;
+    height: 300px;
+    width: 50%;
+    text-align: center;
+    overflow: auto;
+   
+}
+
+/* Modal Content */
+.modal-content {
+    margin: auto;
+    padding: 10px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /*Media Querries*/
 
@@ -137,6 +173,15 @@ h1 {
         height: 110px;
         padding: 0;
         margin: 2px;
+    }
+    
+    .modal {
+        width: 300px;
+        margin: auto;
+    }
+    .score-panel {
+        width: 260px;
+        padding: 10px;
     }
 }
 
