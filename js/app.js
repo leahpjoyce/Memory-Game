@@ -27,7 +27,6 @@ let currentTimer = 0;
 let popUp = document.querySelector('.pop');
 let matchCounter = 0;
 let popModal = document.getElementById('modal');
-let span = document.getElementsByClassName('close')[0];
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -73,7 +72,6 @@ let allCards = document.querySelectorAll('.card'); // store card class to allCar
 let reset = document.querySelector('.fa-repeat');
 
 
-
 const game = (() => {    
 const cardGame = allCards.forEach(event => {
     event.addEventListener('click', e => {
@@ -97,20 +95,21 @@ const cardGame = allCards.forEach(event => {
                          
                          openCards = []; //empty card after removing open andh show
         
-                              if( matchCounter === 6) {
+                              if( matchCounter === 16) {
                                    clearInterval(currentTimer);
                                    currentTimer = timer.innerHTML;
                                   
                                   var starRating = document.querySelector('.stars').innerHTML;
                                   
-                                  document.getElementById('movesPopUp').innerHTML = moves;
+                                  document.getElementById('movesPopUp').innerHTML = moves + 1 + ' moves';
                                   document.getElementById('starsPopUp').innerHTML = starRating;
-                                  document.getElementById('timePopUp').innerHTML = currentTimer;
+                                  document.getElementById('timePopUp').innerHTML = currentTimer + ' seconds';
                                   setTimeout(() => {
-                                 
-                                  openPopUp();
-                                  
-                                      
+                                
+                                  openPopUp(); // display modal
+                                  closeDisplayPopUp(); // close modal when span class click
+                                  resetGame(); // reset game when span class close click
+            
                                   }, 500);
                                 }
                          }   
@@ -146,12 +145,27 @@ const resetClickCards = (() => {
 	allCards.forEach((card) => {
 		card.classList.remove('match', 'show', 'open', 'animated', 'shake');
 		openCards = [];
-        game();
 	});
 });
 
-              
+/**
+* @description resetGame function
+*/              
 const resetGame = (() => { 
+    second = 0;
+    moves = 0;
+    moveCounter.innerHTML = moves;
+    matchCounter = 0;
+    resetTimer();
+    resetClickCards();
+    timer.innerHTML = 0;
+    for( let i= 0; i < stars.length; i++){
+         stars[i].style.color = 'black';         
+        } 
+    
+});
+
+
 reset.addEventListener('click', () => {
         second = 0;
         moves = 0;
@@ -165,11 +179,9 @@ reset.addEventListener('click', () => {
         for( let i= 0; i < stars.length; i++){
              stars[i].style.color = 'black';         
             } 
- 
+        
     });
-});
 
-resetGame();
 
 const starsCard = (() => {
         for (var i= 0; i < stars.length; i++){
@@ -216,9 +228,13 @@ const resetTimer = (() => {
 });
 
 
+/**
+* @description lockMatch function
+* will count every card if match
+*/ 
 const lockMatch = (() => {
-    let faSymbol = `${openCards[0]}`;
-    let collection = document.getElementsByClassName(`${faSymbol}`);
+    let cardSymbol = openCards[0];
+    let collection = document.getElementsByClassName('cardSymbol');
 
     for(let i=0; i<collection.length; i++){
         collection[i].parentElement.className = `card match`;
@@ -227,18 +243,21 @@ const lockMatch = (() => {
 });
 
 
-
-function closeDisplayPopUp() {
-span.addEventListener('click', () => {
-    popModal.style.display = 'none';
-    resetGame();
+/**
+* @description closeDisplayPopUp function
+* will hide the modal if class close is click
+*/  
+const closeDisplayPopUp = (() => {
+  let span = document.getElementsByClassName("close")[0];
+    span.addEventListener('click', function() {
+        popModal.style.display = "none"; 
+    });
+   
 });
-}
 
-closeDisplayPopUp();
 
-function openPopUp() {
+const openPopUp = (() => {
     modal.style.display = 'block';
-}
+});
 
-popModal.style.display = 'none';  // hides the modal container
+popModal.style.display = 'none';  // hides the modal container when page loads
