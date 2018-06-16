@@ -103,7 +103,8 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-    list-style-type: none;
+    list-style: none;
+
 }
 
 .score-panel .stars li {
@@ -121,7 +122,7 @@ h1 {
 }
 
 /*Start of Modal CSS styles*/
-.modal {
+#modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 50%;
@@ -136,7 +137,7 @@ h1 {
 }
 
 /* Modal Content */
-.modal-content {
+#modal-content {
     margin: auto;
     padding: 10px;
 }
@@ -155,6 +156,8 @@ h1 {
     text-decoration: none;
     cursor: pointer;
 }
+
+
 
 /*Media Querries*/
 
@@ -177,7 +180,7 @@ h1 {
     
     }
     
-    .modal {
+    #modal {
         width: 300px;
         margin: auto;
     }
@@ -186,4 +189,3 @@ h1 {
        
     }
 }
-
