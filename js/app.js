@@ -26,7 +26,8 @@ let timer = document.querySelector(".timer");
 let currentTimer = 0;
 let popUp = document.querySelector('.pop');
 let matchCounter = 0;
-let starsUl = document.querySelector('.stars');
+let popModal = document.getElementById('modal');
+let span = document.getElementsByClassName('close')[0];
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -95,15 +96,23 @@ const cardGame = allCards.forEach(event => {
                                 openCards[1].classList.add('animated', 'shake');
                          
                          openCards = []; //empty card after removing open andh show
-                                
-                            if( matchCounter === 16) {
+        
+                              if( matchCounter === 6) {
+                                   clearInterval(currentTimer);
+                                   currentTimer = timer.innerHTML;
+                                  
+                                  var starRating = document.querySelector('.stars').innerHTML;
+                                  
+                                  document.getElementById('movesPopUp').innerHTML = moves;
+                                  document.getElementById('starsPopUp').innerHTML = starRating;
+                                  document.getElementById('timePopUp').innerHTML = currentTimer;
                                   setTimeout(() => {
-                                    buildDivModal();
-                                    innerModalContext();
-                                     
+                                 
+                                  openPopUp();
+                                  
+                                      
                                   }, 500);
-                              }
-
+                                }
                          }   
                      else {
                             setTimeout(() => {
@@ -135,33 +144,19 @@ const moveCard = (() => {
 
 const resetClickCards = (() => { 
 	allCards.forEach((card) => {
-		card.classList.remove("match", "show", "open");
+		card.classList.remove('match', 'show', 'open', 'animated', 'shake');
 		openCards = [];
-
+        game();
 	});
 });
 
+              
 const resetGame = (() => { 
-    second = 0;
-    moves = 0;
-    moveCounter.innerHTML = moves;
-    moveCardCounter();
-    starsCard();
-    resetTimer();
-    resetClickCards();
-    timer.innerHTML = 0;
-    for( let i= 0; i < stars.length; i++){
-         stars[i].style.color = 'black';         
-        }
-    
-
-});
-                     
-
-reset.addEventListener("click", () => {
+reset.addEventListener('click', () => {
         second = 0;
         moves = 0;
         moveCounter.innerHTML = moves;
+        matchCounter = 0;
         moveCardCounter();
         starsCard();
         resetTimer();
@@ -169,12 +164,12 @@ reset.addEventListener("click", () => {
         timer.innerHTML = 0;
         for( let i= 0; i < stars.length; i++){
              stars[i].style.color = 'black';         
-            }
-        game();
+            } 
+ 
+    });
 });
 
-
-
+resetGame();
 
 const starsCard = (() => {
         for (var i= 0; i < stars.length; i++){
@@ -221,42 +216,6 @@ const resetTimer = (() => {
 });
 
 
-const buildDivModal = (() => {
-    const div = document.createElement('div');
-    const container = document.querySelector('.container');
-    container.appendChild(div);
-    
-    div.className = 'modal';
-    div.id = 'myModal';
-
-});
-
-
-const innerModalContext = (() => {
-    let myModal = document.getElementById('myModal');
-     starsUl.style.listStyleType = "none";
-       myModal.innerHTML = 
-            `<div class="context">
-               <h2 class="title">Congratulations !</h2>
-               <p id="message">You won !</p>
-               <p id="time">${timer.innerHTML} second</p>
-               <p id="moves">${moves} moves</p>
-               <p id="stars">${starsUl.innerHTML}</p> 
-               <span class="close">Play Again</p> 
-            </div>`;
-   
-    
-    let span = document.getElementsByClassName("close")[0];
-    span.addEventListener('click', function() {
-        resetClickCards();
-        resetGame();
-        myModal.style.display = "none"; 
-    });
-   
-});
-
-
-
 const lockMatch = (() => {
     let faSymbol = `${openCards[0]}`;
     let collection = document.getElementsByClassName(`${faSymbol}`);
@@ -268,3 +227,18 @@ const lockMatch = (() => {
 });
 
 
+
+function closeDisplayPopUp() {
+span.addEventListener('click', () => {
+    popModal.style.display = 'none';
+    resetGame();
+});
+}
+
+closeDisplayPopUp();
+
+function openPopUp() {
+    modal.style.display = 'block';
+}
+
+popModal.style.display = 'none';  // hides the modal container
